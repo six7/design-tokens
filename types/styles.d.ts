@@ -7,8 +7,25 @@ export type BaseStyle = {
   description: string
 }
 
-export type PaintStyleObject = {
+type GenericStyleObject = {
   name: string,
-  description: string,
+  description: string
+}
+
+export type PaintStyleObject = GenericStyleObject & {
   paints: any[]
+}
+
+type GridType = "GRID" | "ROWS" | "COLUMNS"
+type layoutGrid = {
+  pattern: GridType,
+  sectionSize?: number,
+  gutterSize?: number,
+  alignment?: string,
+  count?: any,
+  offset?: number
+}
+
+export type GridStyleObject = GenericStyleObject & {
+  layoutGrids: layoutGrid[]
 }
