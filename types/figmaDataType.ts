@@ -1,9 +1,9 @@
-import { GridStyleObject, PaintStyleObject } from './styles';
+import { GridStyleObject, PaintStyleObject, TextStyleObject } from './styles';
 
 export type figmaDataType = {
   tokenFrames: SceneNode[],
   paintStyles: PaintStyleObject[],
   gridStyles: GridStyleObject[],
-  textStyles: TextStyle[],
+  textStyles: TextStyleObject[],
   effectStyles: EffectStyle[]
 }
