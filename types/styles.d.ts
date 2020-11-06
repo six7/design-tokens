@@ -38,3 +38,7 @@ export type TextStyleObject = GenericStyleObject & {
   paragraphSpacing: number,
   textCase: TextCase
 }
+
+export type EffectStyleObject = GenericStyleObject & {
+  effects: Effect[]
+}
