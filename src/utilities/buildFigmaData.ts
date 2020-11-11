@@ -17,6 +17,7 @@ const buildFigmaData = (figma: PluginAPI, options = {
 }): figmaDataType => {
   // use spread operator because the original is readOnly
   const tokenFrames = getTokenFrames([...figma.root.children])
+  console.log(tokenFrames)
   // get data from figma
   return {
     tokenFrames: tokenFrames,

@@ -1,3 +1,5 @@
+import { customTokenNodes } from '../../types/tokenNodeTypes'
+
 // the node types that can be used for tokens
 const tokenNodeTypes = [
   'COMPONENT',
@@ -19,21 +21,30 @@ const getFrameNodes = (nodes): FrameNode[] => nodes.map(page => page.findChildre
  * @param SceneNode node
  */
 const isTokenNode = (node: SceneNode): boolean => tokenNodeTypes.includes(node.type)
-
 /**
  * Returns all frames from the file that have a name that starts with _tokens or the user defined token specifier
  *
  * @param pages PageNodes
  */
-const getTokenFrames = (pages: PageNode[]): SceneNode[] => {
+const getTokenFrames = (pages: PageNode[]) => {
   // get token frames
   const tokenFrames = getFrameNodes(pages)
+  
   // get all children of token frames
-  return tokenFrames.map(frame => frame
+  return tokenFrames.map(frame => <customTokenNodes[]>frame
     // check if children are of valide types
     .findChildren(node => isTokenNode(node)))
     // merges all children into one array
     .reduce((flatten, arr) => [...flatten, ...arr], [])
+    // export
+    .map(node => {
+      const element = {
+        bottomLeftRadius: node.bottomLeftRadius,
+        bottomRightRadius: node.bottomRightRadius
+      }
+      console.log(element)
+      return element
+    })
 }
 
 export default getTokenFrames
